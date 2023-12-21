@@ -4,7 +4,7 @@ function start() {
   numberOfFilms = +prompt("Скільки фільмів ви вже переглянули?", "");
 
   while (numberOfFilms == "" || numberOfFilms == null || isNaN(numberOfFilms)) {
-    numberOfFilms = +prompt("Скільки фільмів ви вже переглянули?", "");
+    numberOfFilms = +prompt("Скільки фільмів ви вже переглянули 🎬 ?", "");
   }
 }
 
@@ -20,8 +20,8 @@ const personalMovieDB = {
 
 function rememberMyFilms() {
   for (let i = 0; i < 2; i++) {
-    const lastFilm = prompt("Один з останніх переглянутих фільмів?", "");
-    const ratingFilm = prompt("На скільки оцінюєте фільм?", "");
+    const lastFilm = prompt("Який фільм Ви переглянули?", "");
+    const ratingFilm = prompt("На скільки оцінюєте даний фільм?", "");
 
     if (
       lastFilm != null &&
@@ -43,11 +43,11 @@ rememberMyFilms();
 
 function detectPersonalLevel() {
   if (personalMovieDB.count < 10) {
-    console.log("ви не кіноман");
+    console.log("Ви не кіноман 🎬");
   } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-    console.log("ви класичний глядач");
+    console.log("Ви класичний глядач 🎬 ");
   } else if (personalMovieDB.count >= 30) {
-    console.log("кіноман");
+    console.log("Ви кіноман 🎬 ");
   } else {
     console.log("error");
   }
@@ -55,4 +55,23 @@ function detectPersonalLevel() {
 
 detectPersonalLevel();
 
-console.log(personalMovieDB);
+function showMyDB(hidden) {
+  if (!hidden) {
+    console.log(personalMovieDB);
+    console.log("Access open 📂");
+  } else {
+    console.log("Access closed 🙅 , login please");
+  }
+}
+
+showMyDB(personalMovieDB.privat);
+
+function writeYourGanres() {
+  for (let i = 1; i <= 3; i++) {
+    personalMovieDB.genres[i - 1] = prompt(
+      `Ваш улюблений жанр під номером  ${i}`
+    );
+  }
+}
+
+writeYourGanres();
